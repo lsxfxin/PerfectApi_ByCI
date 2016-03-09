@@ -1,0 +1,17 @@
+name: openapisforuse
+version: 1
+handle:
+
+#- rewrite: if (!-f && %{REQUEST_URI} ~ "template/index.php/(.*)") goto "/template/index.php/%1"
+- rewrite: if (!-f && %{REQUEST_URI} ~ "template/(.*)") goto "/template/index.php/%1"
+- rewrite: if (!-f && %{REQUEST_URI} ~ "app1/index.php/(.*)") goto "/app1/index.php/%1"
+- rewrite: if (!-f && %{REQUEST_URI} ~ "app1/(.*)") goto "/app1/index.php/%1"
+ 
+cron:
+    - description: dlt_crawlerOne
+      url: app1/Caipiao/dlt_crawlerOne/212121
+      schedule: 0 23 * * *  
+      
+    - description: ssq_crawlerOne
+      url: app1/Caipiao/ssq_crawlerOne/212121
+      schedule: 0 23 * * * 
